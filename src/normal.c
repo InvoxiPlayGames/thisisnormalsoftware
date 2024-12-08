@@ -121,7 +121,7 @@ int main(int argc, char **argv)
     } else
     {
         // Write mode code
-        printf("Writing 0x%llx bytes from '%s' to 0x%llx in %i...", length, filename, address, pid);
+        printf("Writing from '%s' to 0x%llx in %i...", filename, address, pid);
         uint8_t readbuf[DUMP_PAGE_SIZE];
         size_t offset = 0;
         size_t r = DUMP_PAGE_SIZE;
@@ -129,8 +129,8 @@ int main(int argc, char **argv)
             r = fread(readbuf, 1, DUMP_PAGE_SIZE, fp);
             if (r > 0) {
                 write_to_process(pid, address + offset, readbuf, r);
+                offset += r;
             }
-            offset += r;
         }
         printf("ok (0x%x).\n", offset);
     }
