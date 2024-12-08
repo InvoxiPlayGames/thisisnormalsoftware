@@ -1,0 +1,10 @@
+# build output
+*.o
+*.a
+normalsoftware
+# normal files
+*.exe
+*.bin
+*.dat
+*.bz2
+*.zip
